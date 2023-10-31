@@ -19,22 +19,6 @@
         <appender-ref ref="ConsoleAppender" />
     </root>
 
-    <appender name="HIKARI" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${server.tomcat.basedir}/hikari/hikari.log</file>
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <Pattern>[%d{dd-MMM-yyyy HH:mm:ss.SSS}] [%logger] [%-5level] - %msg%n</Pattern>
-            <charset>utf8</charset>
-        </encoder>
-
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${server.tomcat.basedir}/hikari/hikari_%d{yyyy-MM-dd}.log
-            </fileNamePattern>
-            <maxHistory>20</maxHistory>
-            <totalSizeCap>1MB</totalSizeCap>
-        </rollingPolicy>
-
-    </appender>
-
     <logger name="com.zaxxer.hikari" level="ALL" additivity="false">
         <appender-ref ref="HIKARI" />
         <appender-ref ref="ConsoleAppender" />
