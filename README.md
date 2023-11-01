@@ -1,24 +1,17 @@
 ## spring-boot-weather-forecast-client-api
 
-Purpose : Use programmatic transaction management instead of @Transactional annotation. <br/>
-Reason : Get rid of annotation processing cost. <br/>
+Purpose : Use openweathermap in spring boot API <br/>
 
 ### Local run steps <br/>
-1- Call customer/saveprogrammatic rest end-point to save customer record. </br>
-2- Call customer/list rest end-point to list all customer records. </br>
-3- Before starting the application run <b>mvn clean install</b> to generate mapstruct mapper class. </br>
-4- If generated mapstruct mapper class is not recognized by IntelliJ IDE then reload all maven projects. </br>
-5- Start Spring Boot REST API by running main method containing class CustomerInfoApplication.java in your IDE. <br/>
-6- Alternatively you can start your Docker container by following the commands below. <br/>
+1- Start Spring Boot REST API by running main method containing class WeatherForecastClientAPI.java in your IDE. <br/>
 NOT : Execute maven command from where the pom.xml is located in the project directory to create Spring Boot executable jar. <br/>
 <pre> 
-$ mvn clean install -U -X <br/>
-$ mvn spring-boot:run <br/>
+spring-boot-weather-forecast-client-api $ mvn clean install -U -X <br/>
 </pre>
 
 swagger_ui can be accessed via http port 8082 from localhost : <br/>
 http://localhost:8082/weather-forecast/swagger-ui/index.html#/ <br/><br/>
-![https_swagger_ui](doc/https_swagger_ui.png) <br/><br/>
+![https_swagger_ui](doc/http_localhost_8082_swagger_ui.PNG) <br/><br/>
 
 
 ### Tech Stack
@@ -37,17 +30,7 @@ mockito-core
 mockito-junit-jupiter
 mockito-inline
 </pre>
-### Docker build run steps
-NOT : Execute docker commands from where the DockerFile is located. <br/>
-NOT : Tested on Windows 10 with Docker Desktop Engine Version : 20.10.11 <br/>
-<pre>
-$ docker system prune -a --volumes <br/>
-$ docker build . --tag demo  <br/>
-$ docker images <br/>
-  REPOSITORY   TAG       IMAGE ID       CREATED         SIZE <br/>
-  demo         latest    9d4a0ec3294e   6 minutes ago   288MB <br/>
-$ docker run -p 8443:8443 -e "SPRING_PROFILES_ACTIVE=dev" demo:latest <br/>
-</pre>
+
 
 ## API OPERATIONS
 ### Save a new customer to database
