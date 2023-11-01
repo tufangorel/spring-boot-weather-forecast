@@ -32,7 +32,7 @@ mockito-inline
 
 
 ## API OPERATIONS
-### Get Weather Forecast By City Id provided in http body
+### Operation 1 : Get Weather Forecast By City Id provided in http body
 NOT: In this scenario access token is in the application.properties file.
 
 Method : HTTP.POST <br/>
@@ -63,7 +63,8 @@ HTTP response code 200 <br/>
 }
 </pre>
 
-### Get Weather Forecast By City Id and access token provided in query string
+### Operation 2 : Get Weather Forecast By City Id and access token provided in query string
+NOT: In this scenario access token is provided in the query string directly.
 
 Method : HTTP.GET <br/>
 URL : http://localhost:8082/weather-forecast/forecast/get/524901/4d918421e250e65043de409947a79b28 <br/>
@@ -88,7 +89,8 @@ HTTP response code 200 <br/>
 </pre>
 <br/>
 
-### Get Weather Forecast By City Id and access token provided in http request header
+### Operation 3 : Get Weather Forecast By City Id and access token provided in http request header
+NOT: In this scenario access token is provided in the http Authorization request header
 
 Method : HTTP.GET <br/>
 URL : http://localhost:8082/weather-forecast/forecast/get/524901 <br/>
