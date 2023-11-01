@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class City {
 
-    private long cityId;
+    private Long cityId;
 }

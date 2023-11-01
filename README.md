@@ -20,8 +20,6 @@ swagger_ui can be accessed via http port 8082 from localhost : <br/>
 http://localhost:8082/weather-forecast/swagger-ui/index.html <br/><br/>
 ![https_swagger_ui](doc/https_swagger_ui.png) <br/><br/>
 
-Database ER diagram : <br/>
-![https_swagger_ui](doc/cust_db_er_diagram.png) <br/><br/>
 
 ### Tech Stack
 <pre>
@@ -31,22 +29,13 @@ spring boot
 spring boot starter data jpa
 spring boot starter web
 spring boot starter test
-spring boot starter aop
-spring boot starter actuator
-spring kafka
-spring security web
 springdoc openapi ui
 springfox swagger ui
-hibernate
 logback
 maven
-mapstruct
-mapstruct-processor
-hikari connection pool
 mockito-core
 mockito-junit-jupiter
 mockito-inline
-Docker
 </pre>
 ### Docker build run steps
 NOT : Execute docker commands from where the DockerFile is located. <br/>

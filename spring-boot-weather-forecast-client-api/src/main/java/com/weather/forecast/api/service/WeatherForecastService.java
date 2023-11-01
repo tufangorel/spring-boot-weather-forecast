@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 @Service
@@ -21,7 +22,7 @@ public class WeatherForecastService {
     private static final Logger LOGGER = LoggerFactory.getLogger(WeatherForecastService.class.getName());
 
     private final String API_KEY;
-    private final String apiUrl;
+    private final String API_URL;
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
 
@@ -29,16 +30,20 @@ public class WeatherForecastService {
         this.restTemplate = restTemplate;
         this.objectMapper = objectMapper;
         this.API_KEY = environment.getProperty("openweathermap.api.key");
-        this.apiUrl = environment.getProperty("openweathermap.api.url");
+        this.API_URL = environment.getProperty("openweathermap.api.url");
     }
 
-    public WeatherForecastResponse getWeatherForecastByCityId(long cityId) {
-        String url = apiUrl + "?id=" + cityId + "&appid=" + API_KEY;
+    public WeatherForecastResponse getWeatherForecastByCityId(long cityId) throws JsonProcessingException {
+        String url = API_URL + "?id=" + cityId + "&appid=" + API_KEY;
         return getWeatherResponse(url);
     }
 
-    private WeatherForecastResponse getWeatherResponse(String url) {
+    public WeatherForecastResponse getWeatherForecastByCityIdAndAppID(String cityId, String appId) throws JsonProcessingException {
+        String url = API_URL + "?id=" + cityId + "&appid=" + appId;
+        return getWeatherResponse(url);
+    }
 
+    private WeatherForecastResponse getWeatherResponse(String url) throws JsonProcessingException {
 
         try {
 
@@ -77,10 +82,12 @@ public class WeatherForecastService {
 
             return weatherForecastResponse;
 
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-            return null;
+        } catch (JsonProcessingException jsonProcessingException) {
+            jsonProcessingException.printStackTrace();
+            throw jsonProcessingException;
         }
+
     }
+
 
 }
