@@ -18,7 +18,6 @@
         <HikariCP.version>5.0.1</HikariCP.version>
         <h2.version>2.1.210</h2.version>
         <springdoc-openapi-starter-webmvc-ui.version>2.0.2</springdoc-openapi-starter-webmvc-ui.version>
-        <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
         <skip.unit.tests>true</skip.unit.tests>
         <springfox-core.version>3.0.0</springfox-core.version>
         <io.github.classgraph.classgraph.version>4.8.153</io.github.classgraph.classgraph.version>
@@ -26,6 +25,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -69,11 +69,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
         </dependency>
@@ -86,12 +81,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>${org.mapstruct.version}</version>
         </dependency>
 
         <dependency>
@@ -117,6 +106,7 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
 
     </dependencies>
 
