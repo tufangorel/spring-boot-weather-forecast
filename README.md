@@ -4,7 +4,6 @@ Purpose : Use openweathermap in spring boot API <br/>
 
 ### Local run steps <br/>
 1- Start Spring Boot REST API by running main method containing class WeatherForecastClientAPI.java in your IDE. <br/>
-NOT : Execute maven command from where the pom.xml is located in the project directory to create Spring Boot executable jar. <br/>
 <pre> 
 spring-boot-weather-forecast-client-api $ mvn clean install -U -X <br/>
 </pre>
@@ -33,39 +32,24 @@ mockito-inline
 
 
 ## API OPERATIONS
-### Save a new customer to database
+### Get Weather Forecast By City Id provided in http body
+NOT: In this scenario access token is in the application.properties file.
 
 Method : HTTP.POST <br/>
-URL : https://localhost:8443/customer-info/customer/saveprogrammatic <br/>
+URL : http://localhost:8082/weather-forecast/forecast/by-city-id <br/>
 HTTP Request Body : <br/>
 <pre>
 {
-    "name": "name1",
-    "age": 1,
-    "shippingAddress": {
-        "address": {
-            "streetName": "software",
-            "city": "ankara",
-            "country": "TR"
-        }
-    }
+    "cityId": 524901
 }
 </pre>
 
 Curl Request : <br/>
 <pre>
-curl --location --request POST 'https://localhost:8443/customer-info/customer/saveprogrammatic' \
+curl --location 'http://localhost:8082/weather-forecast/forecast/by-city-id' \
 --header 'Content-Type: application/json' \
---data-raw '{
-    "name": "name1",
-    "age": 1,
-    "shippingAddress": {
-        "address": {
-            "streetName": "software",
-            "city": "ankara",
-            "country": "TR"
-        }
-    }
+--data '{
+    "cityId": 524901
 }'
 </pre><br/>
 
@@ -74,44 +58,22 @@ Response :
 HTTP response code 200 <br/>
 <pre>
 {
-    "id": 1,
-    "name": "name1",
-    "age": 1,
-    "shippingAddress": {
-        "id": 1,
-        "address": {
-            "id": 1,
-            "streetName": "software",
-            "city": "ankara",
-            "country": "TR"
-        }
-    }
+    "maxFeelsLike": 283.48,
+    "maxHumidity": 96
 }
 </pre>
 
-HTTP Response Headers : </br>
-<pre>
-request-id: 68182bbf-996d-4732-a6ff-2c49a90012d1
-correlation-id: 68182bbf-996d-4732-a6ff-2c49a90012d1
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-</pre>
-
-### List all customers saved to database
+### Get Weather Forecast By City Id and access token provided in query string
 
 Method : HTTP.GET <br/>
-URL : https://localhost:8443/customer-info/customer/list <br/>
+URL : http://localhost:8082/weather-forecast/forecast/get/524901/4d918421e250e65043de409947a79b28 <br/>
 Request Body : <br/>
 <pre>
 {}
 </pre>
 Curl Request : <br/>
 <pre>
-curl --location --request GET 'https://localhost:8443/customer-info/customer/list' \
---header 'Content-Type: application/json' \
---header 'Cookie: JSESSIONID=5E6B21C9533643F4A7EE462DCBB3B312' \
---data-raw '{}'
+curl --location 'http://localhost:8082/weather-forecast/forecast/get/524901/4d918421e250e65043de409947a79b28'
 </pre>
 <br/>
 
@@ -119,29 +81,36 @@ Response :
 
 HTTP response code 200 <br/>
 <pre>
-[
-    {
-        "id": 1,
-        "name": "name1",
-        "age": 1,
-        "shippingAddress": {
-            "id": 1,
-            "address": {
-                "id": 1,
-                "streetName": "software",
-                "city": "ankara",
-                "country": "TR"
-            }
-        }
-    }
-]
+{
+    "maxFeelsLike": 283.48,
+    "maxHumidity": 96
+}
 </pre>
 <br/>
-HTTP Response Headers : </br>
+
+### Get Weather Forecast By City Id and access token provided in http request header
+
+Method : HTTP.GET <br/>
+URL : http://localhost:8082/weather-forecast/forecast/get/524901 <br/>
+Request Body : <br/>
 <pre>
-request-id: 411b4b33-6af5-4f78-b185-4171e779222d
-correlation-id: 411b4b33-6af5-4f78-b185-4171e779222d
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
+{}
 </pre>
+Curl Request : <br/>
+<pre>
+curl --location 'http://localhost:8082/weather-forecast/forecast/get/524901' \
+--header 'Authorization: 4d918421e250e65043de409947a79b28'
+</pre>
+<br/>
+
+Response :
+
+HTTP response code 200 <br/>
+<pre>
+{
+    "maxFeelsLike": 283.48,
+    "maxHumidity": 96
+}
+</pre>
+<br/>
+
