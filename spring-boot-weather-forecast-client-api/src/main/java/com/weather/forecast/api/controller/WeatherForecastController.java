@@ -25,7 +25,7 @@ public class WeatherForecastController {
         this.weatherForecastService = weatherForecastService;
     }
 
-    @Operation(summary = "Get Weather Forecast By City Id")
+    @Operation(summary = "Get Weather Forecast By City Id provided in http body")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved maxFeelsLike and maxHumidity"),
             @ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
@@ -49,7 +49,7 @@ public class WeatherForecastController {
         return new ResponseEntity<String>("City value can not be null", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @Operation(summary = "Get Weather Forecast By City Id and access token")
+    @Operation(summary = "Get Weather Forecast By City Id and access token provided in query string")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved maxFeelsLike and maxHumidity"),
             @ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),
@@ -74,7 +74,7 @@ public class WeatherForecastController {
         return new ResponseEntity<String>("City value and appId can not be null", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @Operation(summary = "Get Weather Forecast By City Id and access token in http request header")
+    @Operation(summary = "Get Weather Forecast By City Id and access token provided in http request header")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved maxFeelsLike and maxHumidity"),
             @ApiResponse(responseCode = "401", description = "You are not authorized to view the resource"),

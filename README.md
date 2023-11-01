@@ -17,7 +17,7 @@ $ mvn spring-boot:run <br/>
 </pre>
 
 swagger_ui can be accessed via http port 8082 from localhost : <br/>
-http://localhost:8082/weather-forecast/swagger-ui/index.html <br/><br/>
+http://localhost:8082/weather-forecast/swagger-ui/index.html#/ <br/><br/>
 ![https_swagger_ui](doc/https_swagger_ui.png) <br/><br/>
 
 
