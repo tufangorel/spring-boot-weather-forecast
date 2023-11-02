@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -17,6 +18,6 @@ public class WeatherResponse {
     private int cnt;
     private City city;
 
-    private List<Weather> list;
+    private List<Weather> list = new ArrayList<>();
 
 }
