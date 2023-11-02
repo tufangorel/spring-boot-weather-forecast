@@ -101,7 +101,7 @@ Request Body : <br/>
 Curl Request : <br/>
 <pre>
 curl --location 'http://localhost:8082/weather-forecast/forecast/get/524901' \
---header 'Authorization: 4d918421e250e65043de409947a79b28'
+--header 'ACCESS-TOKEN: 4d918421e250e65043de409947a79b28'
 </pre>
 <br/>
 
