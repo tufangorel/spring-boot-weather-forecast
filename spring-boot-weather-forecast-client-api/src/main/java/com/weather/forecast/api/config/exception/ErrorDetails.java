@@ -26,4 +26,13 @@ public class ErrorDetails {
     public String getDetails() {
         return details;
     }
+
+    @Override
+    public String toString() {
+        return "ErrorDetails{" +
+                "timestamp=" + timestamp +
+                ", message='" + message + '\'' +
+                ", details='" + details + '\'' +
+                '}';
+    }
 }
