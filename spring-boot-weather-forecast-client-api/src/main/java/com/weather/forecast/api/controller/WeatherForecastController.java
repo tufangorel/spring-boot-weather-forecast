@@ -6,6 +6,7 @@ import com.weather.forecast.api.service.WeatherForecastService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -83,11 +84,11 @@ public class WeatherForecastController {
     })
     @GetMapping(path = "/get/{cityId}")
     public ResponseEntity<?> getWeatherForecastByCityIdAndAppIDWithHeader( @PathVariable("cityId") String cityId,
-                                                                        @RequestHeader(value="Authorization") String authorizationHeader ) throws Exception {
+                                                                           @RequestHeader(value="ACCESS-TOKEN") String authorization ) throws Exception {
 
-        if( cityId != null && authorizationHeader != null ) {
+        if( cityId != null && authorization != null ) {
             Log.info("Fetching weather details with cityId: {}", cityId);
-            WeatherForecastResponse weatherForecastResponse = weatherForecastService.getWeatherForecastByCityIdAndAppID(cityId, authorizationHeader);
+            WeatherForecastResponse weatherForecastResponse = weatherForecastService.getWeatherForecastByCityIdAndAppID(cityId, authorization);
 
             if (weatherForecastResponse != null) {
                 return new ResponseEntity<>(weatherForecastResponse, HttpStatus.OK);
